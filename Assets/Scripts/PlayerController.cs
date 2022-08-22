@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,33 +11,28 @@ public class PlayerController : MonoBehaviour
     private float movementSpeed;
     Vector2 movement;
     public float defaultSpriteAngle = 90f;
+    private Vector3 target;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        target = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if (Input.GetMouseButtonDown(0))
+        {
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // target.z = transform.position.z;
+        }
+        transform.position = Vector3.MoveTowards(transform.position, target, movementSpeed * Time.deltaTime);
         RotateToMouse();
-
-    }
-
-    void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + movement * movementSpeed * Time.fixedDeltaTime);
     }
 
     void RotateToMouse()
     {
-        Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
-        diff.Normalize();
 
-        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        this.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - defaultSpriteAngle);
     }
 }
