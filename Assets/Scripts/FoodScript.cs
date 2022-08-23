@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class FoodScript : MonoBehaviour
 {
+    public GameObject playerWallaby;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Collision!");
             Destroy(this.gameObject);
+            playerWallaby.GetComponent<HealthScript>().GainHealth(20);
         }
     }
 
