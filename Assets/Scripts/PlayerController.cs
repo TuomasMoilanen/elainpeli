@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            lastPos = rb.transform.position;
             // target.z = transform.position.z; 
 
         }
