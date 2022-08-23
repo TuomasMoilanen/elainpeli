@@ -2627,11 +2627,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7259526663158683378, guid: 2c28c5122e34ae24ea4df9b0e31641fe, type: 3}
       propertyPath: m_LinearDrag
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7259526663158683378, guid: 2c28c5122e34ae24ea4df9b0e31641fe, type: 3}
       propertyPath: m_AngularDrag
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7259526663158683378, guid: 2c28c5122e34ae24ea4df9b0e31641fe, type: 3}
       propertyPath: m_Constraints
