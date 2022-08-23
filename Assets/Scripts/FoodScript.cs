@@ -6,7 +6,7 @@ public class FoodScript : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "PlayerCollider")
+        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Collision!");
             Destroy(this.gameObject);
