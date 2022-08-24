@@ -59,14 +59,25 @@ public class PlayerController : MonoBehaviour
 
     void CheckMovement()
     {
-        if (rb.position != lastPos)
-        {
-            Debug.Log("Freezing rotation");
-        }
-        else
+        if (rb.position == lastPos)
         {
             RotateToMouse();
         }
         lastPos = rb.transform.position;
+    }
+    public void PushBack(Vector2 enemyPos)
+    {
+        var playerPos = new Vector2(transform.position.x, transform.position.y);
+        float pushPwr = 160f;
+        Vector2 pushDir = playerPos - enemyPos;
+        rb.AddForce(pushDir * pushPwr);
+        StartCoroutine(StopRB());
+        rb.isKinematic = false;
+    }
+    IEnumerator StopRB()
+    {
+        yield return new WaitForSeconds(0.5f);
+        rb.isKinematic = true;
+        yield break;
     }
 }

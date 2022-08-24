@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class HealthScript : MonoBehaviour
 {
     public int playerHealth = 100;
+    private Rigidbody2D rb;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -21,14 +24,16 @@ public class HealthScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            takeDamage(20);
+            TakeDamage(20);
+            var enemyPos = new Vector2(other.transform.position.x, other.transform.position.y);
+            gameObject.GetComponent<PlayerController>().PushBack(enemyPos);
         }
     }
     public void GainHealth(int healAmount)
     {
         playerHealth = playerHealth + healAmount;
     }
-    void takeDamage(int damage)
+    void TakeDamage(int damage)
     {
         playerHealth = playerHealth - damage;
     }
