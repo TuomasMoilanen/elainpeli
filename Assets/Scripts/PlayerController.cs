@@ -72,12 +72,13 @@ public class PlayerController : MonoBehaviour
         Vector2 pushDir = playerPos - enemyPos;
         rb.AddForce(pushDir * pushPwr);
         StartCoroutine(StopRB());
-        rb.isKinematic = false;
     }
     IEnumerator StopRB()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         rb.isKinematic = true;
+        rb.velocity = new Vector2(0.0f, 0.0f);
+        rb.isKinematic = false;
         yield break;
     }
 }
