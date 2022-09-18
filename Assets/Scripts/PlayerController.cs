@@ -68,17 +68,19 @@ public class PlayerController : MonoBehaviour
     public void PushBack(Vector2 enemyPos)
     {
         var playerPos = new Vector2(transform.position.x, transform.position.y);
-        float pushPwr = 160f;
+        float pushPwr = 2f;
         Vector2 pushDir = playerPos - enemyPos;
-        rb.AddForce(pushDir * pushPwr);
+        rb.AddForce(pushDir * pushPwr, ForceMode2D.Impulse);
+        // rb.AddForce(pushDir * pushPwr);
         StartCoroutine(StopRB());
     }
     IEnumerator StopRB()
     {
         yield return new WaitForSeconds(2f);
-        rb.isKinematic = true;
+        // rb.isKinematic = true;
         rb.velocity = new Vector2(0.0f, 0.0f);
-        rb.isKinematic = false;
+        rb.position = new Vector2(transform.position.x, transform.position.y);
+        // rb.isKinematic = false;
         yield break;
     }
 }

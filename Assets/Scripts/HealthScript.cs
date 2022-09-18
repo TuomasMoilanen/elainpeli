@@ -7,6 +7,7 @@ public class HealthScript : MonoBehaviour
 {
     public int playerHealth = 100;
     private Rigidbody2D rb;
+    public int playerScore = 0;
 
 
     // Start is called before the first frame update
@@ -32,9 +33,14 @@ public class HealthScript : MonoBehaviour
     public void GainHealth(int healAmount)
     {
         playerHealth = playerHealth + healAmount;
+        playerScore = playerScore + 1;
     }
     void TakeDamage(int damage)
     {
         playerHealth = playerHealth - damage;
+        if (playerHealth <= 0)
+        {
+            this.GetComponent<GameOverScript>().GameOver(playerScore);
+        }
     }
 }
