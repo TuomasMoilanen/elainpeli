@@ -43,10 +43,12 @@ public class GameOverScript : MonoBehaviour
     }
     public void LoadThisScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(currentScene);
     }
     public void LoadMainMenuScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
 }
