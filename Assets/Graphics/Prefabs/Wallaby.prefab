@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 6315324444745735044}
   - component: {fileID: 6315324443456294891}
   - component: {fileID: 6315324443456294881}
+  - component: {fileID: 8011605461496704353}
   m_Layer: 10
   m_Name: Wallaby
   m_TagString: Player
@@ -239,3 +240,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 100
   playerScore: 0
+--- !u!95 &8011605461496704353
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315324444745735045}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d097f3cf590f6d47bf7c020cb6c70f9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
