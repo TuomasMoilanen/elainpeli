@@ -18,6 +18,8 @@ public class GameOverScript : MonoBehaviour
     public int currentSceneID;
     public string mainMenuScene = "2";
     public GameObject gameOverGO;
+    public GameObject sliderGO;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class GameOverScript : MonoBehaviour
     }
     public void GameOver(int score)
     {
+        sliderGO.SetActive(false);
         gameOverGO.SetActive(true);
         Time.timeScale = 0f;
         scoreText.text = score.ToString() + " points";

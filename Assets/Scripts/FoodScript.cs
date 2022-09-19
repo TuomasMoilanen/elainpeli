@@ -10,7 +10,7 @@ public class FoodScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Collision!");
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             playerWallaby.GetComponent<HealthScript>().GainHealth(20);
         }
     }
