@@ -4,10 +4,14 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class DingoMoveDown : MonoBehaviour
-{  public float speed = 5.0f;
+{
+    public float speed = 5.0f;
     private float yDestroy = -40.0f;
 
     private Rigidbody2D enemyRB;
+    private Vector3 movementDirection = Vector3.down;
+    private float rotationSpeed = 100f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +26,12 @@ public class DingoMoveDown : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Rotation towards movement direction
+        // if (enemyRB.velocity.sqrMagnitude > 0)
+        // {
+        //     Quaternion rotationDirection = Quaternion.LookRotation(movementDirection);
+        //     transform.rotation = Quaternion.RotateTowards(transform.rotation, rotationDirection, rotationSpeed * Time.deltaTime);
+        // }
     }
 }
