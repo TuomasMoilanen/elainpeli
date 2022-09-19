@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a34a0d3b351a6418ebdec420a8144d, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  dialogue:
+  - 'This is a dialogue test dialogue.
+
+    Press Space to continue....'
+  - 'This is our second dialogue.
+
+    Do you understand ?'
+  responses:
+  - responseText: Yes
+    dialogueObject: {fileID: 11400000, guid: b1a7fd0334dadb948b99cec0a2098053, type: 2}
+  - responseText: No
+    dialogueObject: {fileID: 11400000, guid: bce894e568fce324cbfc0c7440960f0b, type: 2}
