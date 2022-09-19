@@ -35,8 +35,11 @@ public class HealthScript : MonoBehaviour
     }
     public void GainHealth(int healAmount)
     {
-        playerHealth = playerHealth + healAmount;
+        if (playerHealth < 100)
+        { playerHealth = playerHealth + healAmount; }
+
         playerScore = playerScore + 1;
+
         if (slider.value < 100)
         {
             slider.value = slider.value + 20;

@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 89005840}
   - component: {fileID: 89005842}
   - component: {fileID: 89005841}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8913,7 +8913,7 @@ GameObject:
   - component: {fileID: 297269148}
   - component: {fileID: 297269150}
   - component: {fileID: 297269149}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21296,11 +21296,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2963192591469939414, guid: c838e4fd95b2e124390361e251622965, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.35
+      value: -29.06
       objectReference: {fileID: 0}
     - target: {fileID: 2963192591469939414, guid: c838e4fd95b2e124390361e251622965, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.8
+      value: 11.34
       objectReference: {fileID: 0}
     - target: {fileID: 2963192591469939414, guid: c838e4fd95b2e124390361e251622965, type: 3}
       propertyPath: m_LocalPosition.z
