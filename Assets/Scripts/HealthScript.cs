@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
 {
     public int playerHealth = 100;
     private Rigidbody2D rb;
     public int playerScore = 0;
+    public Slider slider;
 
 
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class HealthScript : MonoBehaviour
             TakeDamage(20);
             var enemyPos = new Vector2(other.transform.position.x, other.transform.position.y);
             gameObject.GetComponent<PlayerController>().PushBack(enemyPos);
+            slider.value = slider.value - 20;
         }
     }
     public void GainHealth(int healAmount)
