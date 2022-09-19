@@ -16,6 +16,7 @@ public class DingoMoveDown : MonoBehaviour
     void Start()
     {
         enemyRB = GetComponent<Rigidbody2D>();
+        transform.Rotate(0, 0, 180);
     }
 
     // Update is called once per frame
