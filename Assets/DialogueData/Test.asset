@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   dialogue:
-  - 'This is a dialogue test dialogue.
+  - 'This, is a dialogue test dialogue !!!!
 
     Press Space to continue....'
-  - 'This is our second dialogue.
+  - 'This is our second dialogue!!!!
 
-    Do you understand ?'
+    Do you understand....?'
   responses:
   - responseText: Yes
     dialogueObject: {fileID: 11400000, guid: b1a7fd0334dadb948b99cec0a2098053, type: 2}

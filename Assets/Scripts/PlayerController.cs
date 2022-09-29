@@ -12,6 +12,8 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private DialogueUI dialogueUI;
+    
     [SerializeField]
     private Rigidbody2D rb;
     [SerializeField]
@@ -20,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public float defaultSpriteAngle = 90f;
     private Vector2 target;
     private Vector2 lastPos;
+    public DialogueUI DialogueUI => dialogueUI;
+    public Interactable Interactable { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +34,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dialogueUI.IsOpen) return;
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            if (Interactable != null)
+            {
+                Interactable.Interact(playerController:this);
+            }
+        }
+
         if (transform.position.z < -2)
         {
             transform.position = new Vector2(transform.position.x, transform.position.y);

@@ -11,6 +11,8 @@ public class DialogueUI : MonoBehaviour
     private ResponseHandler responseHandler;
     private TypeWriterEffect typeWriterEffect;
 
+    public bool IsOpen { get; private set; }
+
 
 
     private void Start()
@@ -18,11 +20,12 @@ public class DialogueUI : MonoBehaviour
         responseHandler = GetComponent<ResponseHandler>();
         typeWriterEffect = GetComponent<TypeWriterEffect>();
         CloseDialogueBox();
-        ShowDialogue(testDialogue);
+        
     }
 
     public void ShowDialogue(DialogueObject dialogueObject)
     {
+        IsOpen = true;
         dialogueBox.SetActive(true);
         StartCoroutine(routine: StepTroughDialogue(dialogueObject));
     }
@@ -34,9 +37,15 @@ public class DialogueUI : MonoBehaviour
         for (int i = 0; i < dialogueObject.Dialogue.Length; i++)
         {
             string dialogue = dialogueObject.Dialogue[i];
-            yield return typeWriterEffect.Run(dialogue, textLabel);
+
+            yield return RunTypingEffect(dialogue);
+
+            textLabel.text = dialogue;
+
 
             if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;
+
+            yield return null;
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
         }
         if (dialogueObject.HasResponses)
@@ -49,11 +58,26 @@ public class DialogueUI : MonoBehaviour
         }
 
     }
+    private IEnumerator RunTypingEffect(string dialogue)
+    {
+        typeWriterEffect.Run(dialogue, textLabel);
+        
+        while (typeWriterEffect.IsRunning)
+        {
+            yield return null;
+            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                typeWriterEffect.Stop();
+            }
+        }
+    }
 
     private void CloseDialogueBox()
     {
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
+        IsOpen = false;
     }
 
 
