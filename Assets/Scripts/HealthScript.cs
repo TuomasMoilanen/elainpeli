@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
-{
+{/*
     public int playerHealth = 100;
     private Rigidbody2D rb;
     public int playerScore = 0;
@@ -52,5 +52,5 @@ public class HealthScript : MonoBehaviour
         {
             this.GetComponent<GameOverScript>().GameOver(playerScore);
         }
-    }
+    }*/
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FoodScript : MonoBehaviour
-{
+{/*
     public GameObject playerWallaby;
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -25,5 +25,5 @@ public class FoodScript : MonoBehaviour
     void Update()
     {
         transform.Rotate(0f, 0f, 0.4f, Space.Self);
-    }
+    }*/
 }
