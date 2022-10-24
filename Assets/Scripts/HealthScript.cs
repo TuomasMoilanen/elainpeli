@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
-{/*
+{
     public int playerHealth = 100;
     private Rigidbody2D rb;
     public int playerScore = 0;
@@ -23,15 +23,17 @@ public class HealthScript : MonoBehaviour
     {
 
     }
-    void OnTriggerEnter2D(Collider2D other)
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(20);
-            var enemyPos = new Vector2(other.transform.position.x, other.transform.position.y);
-            gameObject.GetComponent<PlayerController>().PushBack(enemyPos);
+            var enemyPos = new Vector2(collision.transform.position.x, collision.transform.position.y);
+            // gameObject.GetComponent<PlayerController>().PushBack(enemyPos);
             slider.value = slider.value - 20;
         }
+
     }
     public void GainHealth(int healAmount)
     {
@@ -52,5 +54,5 @@ public class HealthScript : MonoBehaviour
         {
             this.GetComponent<GameOverScript>().GameOver(playerScore);
         }
-    }*/
+    }
 }

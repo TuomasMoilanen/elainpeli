@@ -29,7 +29,7 @@ public class GameOverScript : MonoBehaviour
     {
         currentScene = sceneLoaded.name;
 
-        // mainMenuButton.onClick.AddListener(SceneManager.LoadScene(0););
+        //mainMenuButton.onClick.AddListener(SceneManager.LoadScene(0));
     }
 
     // Update is called once per frame
