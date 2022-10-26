@@ -5,6 +5,7 @@ using System.Numerics;
 using UnityEditor;
 using UnityEditor.Search;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UIElements;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
@@ -17,19 +18,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
     [SerializeField]
-    private float movementSpeed;
-    Vector2 movement;
-    public float defaultSpriteAngle = 90f;
-    private Vector2 target;
-    private Vector2 lastPos;
     public DialogueUI DialogueUI => dialogueUI;
     public Interactable Interactable { get; set; }
+    private float move, moveSpeed, rotation, rotationSpeed;
+   
+    
 
-    // Start is called before the first frame update
-    void Start()
+     void Start()
     {
-        target = transform.position;
+        moveSpeed = 20f;
+        rotationSpeed = 100f;
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -43,51 +44,20 @@ public class PlayerController : MonoBehaviour
                 Interactable.Interact(playerController:this);
             }
         }
+        move = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        rotation = Input.GetAxis("Horizontal") *- rotationSpeed * Time.deltaTime;
+        
 
-        if (transform.position.z < -2)
-        {
-            transform.position = new Vector2(transform.position.x, transform.position.y);
-
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            lastPos = rb.transform.position;
-            // target.z = transform.position.z; 
-
-        }
-
-        CheckMovement();
-
-
-
-        transform.position = Vector2.MoveTowards(transform.position, target, movementSpeed * Time.deltaTime);
     }
-
-    void RotateToMouse()
+    private void LateUpdate()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);
-
+        transform.Translate(0f, move, 0f);
+        transform.Rotate(0f, 0f, rotation);
     }
 
-    void CheckMovement()
-    {
-        if (rb.position == lastPos)
-        {
-            RotateToMouse();
-        }
-        lastPos = rb.transform.position;
-    }
-    public void PushBack(Vector2 enemyPos)
-    {
-        var playerPos = new Vector2(transform.position.x, transform.position.y);
-        float pushPwr = 2f;
-        Vector2 pushDir = playerPos - enemyPos;
-        rb.AddForce(pushDir * pushPwr, ForceMode2D.Impulse);
-        // rb.AddForce(pushDir * pushPwr);
-        StartCoroutine(StopRB());
-    }
+
+
+
     IEnumerator StopRB()
     {
         yield return new WaitForSeconds(2f);
