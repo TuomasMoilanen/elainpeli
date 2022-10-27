@@ -14,18 +14,20 @@ using Vector3 = UnityEngine.Vector3;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private DialogueUI dialogueUI;
-    
     [SerializeField]
     private Rigidbody2D rb;
     [SerializeField]
     public DialogueUI DialogueUI => dialogueUI;
     public Interactable Interactable { get; set; }
     private float move, moveSpeed, rotation, rotationSpeed;
+    public float sprintSpeed;
    
-    
 
-     void Start()
+
+
+    void Start()
     {
+        sprintSpeed = 15f;
         moveSpeed = 20f;
         rotationSpeed = 100f;
     }
@@ -46,9 +48,17 @@ public class PlayerController : MonoBehaviour
         }
         move = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
         rotation = Input.GetAxis("Horizontal") *- rotationSpeed * Time.deltaTime;
-        
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveSpeed = moveSpeed + sprintSpeed;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpeed = moveSpeed - sprintSpeed;
+        }
     }
+
     private void LateUpdate()
     {
         transform.Translate(0f, move, 0f);
