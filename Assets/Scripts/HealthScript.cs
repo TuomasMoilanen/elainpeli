@@ -30,7 +30,7 @@ public class HealthScript : MonoBehaviour
         {
             TakeDamage(20);
             var enemyPos = new Vector2(collision.transform.position.x, collision.transform.position.y);
-            // gameObject.GetComponent<PlayerController>().PushBack(enemyPos);
+            gameObject.GetComponent<PlayerController>().PushBack(enemyPos);
             slider.value = slider.value - 20;
         }
 

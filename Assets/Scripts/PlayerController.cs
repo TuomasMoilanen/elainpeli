@@ -21,18 +21,16 @@ public class PlayerController : MonoBehaviour
     public Interactable Interactable { get; set; }
     private float move, moveSpeed, rotation, rotationSpeed;
     public float sprintSpeed;
+    public bool isSprinting;
+    
+    
    
-
-
-
     void Start()
     {
-        sprintSpeed = 15f;
+        isSprinting = false;
         moveSpeed = 20f;
         rotationSpeed = 100f;
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -49,14 +47,14 @@ public class PlayerController : MonoBehaviour
         move = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
         rotation = Input.GetAxis("Horizontal") *- rotationSpeed * Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerSprintHandler.instance.currentStamina > 50)
         {
+            isSprinting = true;
             moveSpeed = moveSpeed + sprintSpeed;
+            PlayerSprintHandler.instance.UseStamina(10);
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            moveSpeed = moveSpeed - sprintSpeed;
-        }
+
+        isSprinting = false;
     }
 
     private void LateUpdate()
@@ -77,4 +75,15 @@ public class PlayerController : MonoBehaviour
         // rb.isKinematic = false;
         yield break;
     }
+
+    public void PushBack(Vector2 enemyPos)
+    {
+        var playerPos = new Vector2(transform.position.x, transform.position.y);
+        float pushPwr = 10f;
+        Vector2 pushDir = playerPos - enemyPos;
+        rb.AddForce(pushDir * pushPwr, ForceMode2D.Impulse);
+        rb.AddForce(pushDir * pushPwr);
+        StartCoroutine(StopRB());
+    }
+ 
 }

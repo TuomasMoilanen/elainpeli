@@ -59,7 +59,7 @@ namespace Pathfinding {
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-
+				
                 GetComponent<AIDestinationSetter>().enabled = true;
 
             }
