@@ -67387,8 +67387,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 1632046607}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &523739252
 GameObject:
@@ -73833,6 +73833,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1064285197}
+  - {fileID: 521221937}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75963,7 +75964,7 @@ PrefabInstance:
       objectReference: {fileID: 1836706204}
     - target: {fileID: 6969518234292820402, guid: 2c28c5122e34ae24ea4df9b0e31641fe, type: 3}
       propertyPath: sprintSpeed
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6969518234292820412, guid: 2c28c5122e34ae24ea4df9b0e31641fe, type: 3}
       propertyPath: slider

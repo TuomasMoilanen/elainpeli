@@ -21,15 +21,18 @@ public class PlayerController : MonoBehaviour
     public Interactable Interactable { get; set; }
     private float move, moveSpeed, rotation, rotationSpeed;
     public float sprintSpeed;
-    public bool isSprinting;
-    
-    
-   
+    private bool boosting;
+    private float boostTimer;
+    public Animator animator;
+
+
     void Start()
     {
-        isSprinting = false;
+        animator = GetComponent<Animator>();
         moveSpeed = 20f;
         rotationSpeed = 100f;
+        boosting = false;
+
     }
 
     // Update is called once per frame
@@ -41,20 +44,41 @@ public class PlayerController : MonoBehaviour
         {
             if (Interactable != null)
             {
-                Interactable.Interact(playerController:this);
+                Interactable.Interact(playerController: this);
             }
         }
         move = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-        rotation = Input.GetAxis("Horizontal") *- rotationSpeed * Time.deltaTime;
+        rotation = Input.GetAxis("Horizontal") * -rotationSpeed * Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerSprintHandler.instance.currentStamina > 50)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerSprintHandler.instance.currentStamina > 10)
         {
-            isSprinting = true;
+            boosting = true;
             moveSpeed = moveSpeed + sprintSpeed;
-            PlayerSprintHandler.instance.UseStamina(10);
+            PlayerSprintHandler.instance.UseStamina(40);
+
+        }
+     
+        if (boosting)
+        {
+            boostTimer += Time.deltaTime;
+            if (boostTimer >= 1)
+            {
+                moveSpeed = 20;
+                boostTimer = 0;
+                boosting = false;
+            }
         }
 
-        isSprinting = false;
+    
+        if (Input.GetAxisRaw("Vertical") != 0)
+        {
+
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
     }
 
     private void LateUpdate()
@@ -85,5 +109,5 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(pushDir * pushPwr);
         StartCoroutine(StopRB());
     }
- 
+
 }
