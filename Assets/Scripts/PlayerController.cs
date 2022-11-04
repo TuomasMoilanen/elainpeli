@@ -47,14 +47,16 @@ public class PlayerController : MonoBehaviour
                 Interactable.Interact(playerController: this);
             }
         }
+        
         move = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+
         rotation = Input.GetAxis("Horizontal") * -rotationSpeed * Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerSprintHandler.instance.currentStamina > 10)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerSprintHandler.instance.currentStamina > 10 && move >= 0)
         {
             boosting = true;
             moveSpeed = moveSpeed + sprintSpeed;
-            PlayerSprintHandler.instance.UseStamina(40);
+            PlayerSprintHandler.instance.UseStamina(25);
 
         }
      
@@ -83,8 +85,10 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.Translate(0f, move, 0f);
+        if (move >= 0)
+            transform.Translate(0f, move, 0f);
         transform.Rotate(0f, 0f, rotation);
+        
     }
 
 
