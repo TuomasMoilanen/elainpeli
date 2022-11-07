@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     private bool boosting;
     private float boostTimer;
     public Animator animator;
+    public GameObject quizCanvas;
+    public GameObject secondQuiz;
+
 
 
     void Start()
@@ -125,9 +128,20 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Quiz"))
         {
-            SceneManager.LoadScene("QuizScene");
 
+            quizCanvas.SetActive(true);
         }
+
+        if (collision.gameObject.CompareTag("Quiz2"))
+        {
+
+            secondQuiz.SetActive(true);
+        }
+    }
+    public void restart()
+    {
+        quizCanvas.SetActive(false);
+        secondQuiz.SetActive(false);
     }
 
 
