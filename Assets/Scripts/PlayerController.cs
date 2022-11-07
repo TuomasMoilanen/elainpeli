@@ -30,9 +30,9 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         moveSpeed = 20f;
-        rotationSpeed = 100f;
+        rotationSpeed = 200f;
         boosting = false;
-
+        
     }
 
     // Update is called once per frame
@@ -40,14 +40,19 @@ public class PlayerController : MonoBehaviour
     {
         if (dialogueUI.IsOpen) return;
 
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
+            animator.SetBool("isWalking", false);
             if (Interactable != null)
             {
+                animator.SetBool("isWalking", false);
+                moveSpeed = 0;
                 Interactable.Interact(playerController: this);
             }
+
         }
-        
+      
+
         move = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
         rotation = Input.GetAxis("Horizontal") * -rotationSpeed * Time.deltaTime;
@@ -81,6 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
+      
     }
 
     private void LateUpdate()
@@ -113,5 +119,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(pushDir * pushPwr);
         StartCoroutine(StopRB());
     }
+
+
 
 }

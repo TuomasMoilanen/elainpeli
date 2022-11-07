@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Enemyattackrange
+  - Dialog
   layers:
   - Default
   - TransparentFX
