@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
+        
       
     }
 
@@ -118,6 +120,14 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(pushDir * pushPwr, ForceMode2D.Impulse);
         rb.AddForce(pushDir * pushPwr);
         StartCoroutine(StopRB());
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Quiz"))
+        {
+            SceneManager.LoadScene("QuizScene");
+
+        }
     }
 
 
