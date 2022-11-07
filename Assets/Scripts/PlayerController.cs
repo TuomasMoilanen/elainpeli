@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
         {
 
             quizCanvas.SetActive(true);
+
         }
 
         if (collision.gameObject.CompareTag("Quiz2"))
