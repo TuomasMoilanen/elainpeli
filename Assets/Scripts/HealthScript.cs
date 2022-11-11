@@ -10,6 +10,7 @@ public class HealthScript : MonoBehaviour
     private Rigidbody2D rb;
     public int playerScore = 0;
     public Slider slider;
+    [SerializeField] private AudioSource damageSound;
 
 
     // Start is called before the first frame update
@@ -32,6 +33,7 @@ public class HealthScript : MonoBehaviour
             var enemyPos = new Vector2(collision.transform.position.x, collision.transform.position.y);
             gameObject.GetComponent<PlayerController>().PushBack(enemyPos);
             slider.value = slider.value - 20;
+            damageSound.Play();
         }
 
     }
