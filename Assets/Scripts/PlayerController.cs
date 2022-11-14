@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public GameObject quizCanvas;
     public GameObject secondQuiz;
+    [SerializeField] private AudioSource movementSound;
+    [SerializeField] private AudioSource sprintingSound;
+
 
 
 
@@ -66,6 +69,7 @@ public class PlayerController : MonoBehaviour
             boosting = true;
             moveSpeed = moveSpeed + sprintSpeed;
             PlayerSprintHandler.instance.UseStamina(25);
+            sprintingSound.Play();
 
         }
      
@@ -139,6 +143,7 @@ public class PlayerController : MonoBehaviour
             secondQuiz.SetActive(true);
         }
     }
+
     public void restart()
     {
         quizCanvas.SetActive(false);

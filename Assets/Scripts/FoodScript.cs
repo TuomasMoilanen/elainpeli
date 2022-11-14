@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class FoodScript : MonoBehaviour
 {
+    [SerializeField] private AudioSource healingSound;
+
     public GameObject playerWallaby;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            healingSound.Play();
             Debug.Log("Collision!");
-            Destroy(gameObject);
             playerWallaby.GetComponent<HealthScript>().GainHealth(20);
+            StartCoroutine(DelayTimer());
+            
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
+    private IEnumerator DelayTimer(){
+            while(true){
+                yield return new WaitForSeconds(0.1f);
+                Destroy(gameObject);
+            }
     }
-
-    // Update is called once per frame
     void Update()
     {
         transform.Rotate(0f, 0f, 0.4f, Space.Self);
