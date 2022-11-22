@@ -9,6 +9,8 @@ TagManager:
   - Dialog
   - Quiz
   - Quiz2
+  - Info
+  - Info2
   layers:
   - Default
   - TransparentFX

@@ -12,6 +12,7 @@ using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private DialogueUI dialogueUI;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public GameObject quizCanvas;
     public GameObject secondQuiz;
+    public GameObject startuptext;
     [SerializeField] private AudioSource movementSound;
     [SerializeField] private AudioSource sprintingSound;
 
@@ -141,6 +143,19 @@ public class PlayerController : MonoBehaviour
         {
 
             secondQuiz.SetActive(true);
+        }
+        if (collision.gameObject.CompareTag("Info"))
+        {
+
+            startuptext.SetActive(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Info"))
+        {
+
+            startuptext.SetActive(false);
         }
     }
 
