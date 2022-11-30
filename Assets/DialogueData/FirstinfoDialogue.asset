@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: FirstinfoDialogue
   m_EditorClassIdentifier: 
   dialogue:
-  - Try to find all food and read all info to answer all quiz.
+  - Try to find all food and read info to answer all quiz at the TOTEM in the end.
+    WATCH OUT FOR DINGO WILL EAT YOU.
   responses: []

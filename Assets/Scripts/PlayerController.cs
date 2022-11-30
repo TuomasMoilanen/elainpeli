@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Quiz"))
         {
 
-            quizCanvas.SetActive(true);
+            SceneManager.LoadScene("QuizScene");
 
         }
 
@@ -162,6 +162,14 @@ public class PlayerController : MonoBehaviour
     {
         quizCanvas.SetActive(false);
         secondQuiz.SetActive(false);
+    }
+    public void Map()
+    {
+        SceneManager.LoadScene("Map");
+    }
+    public void Australia()
+    {
+        SceneManager.LoadScene("Australia");
     }
 
 

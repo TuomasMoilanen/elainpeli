@@ -79,4 +79,12 @@ public class QuizManager : MonoBehaviour
 
        
     }
+    public void Map()
+    {
+        SceneManager.LoadScene("Map");
+    }
+    public void Australia()
+    {
+        SceneManager.LoadScene("Australia");
+    }
 }
