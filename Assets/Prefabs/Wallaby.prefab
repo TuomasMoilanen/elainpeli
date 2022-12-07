@@ -113,6 +113,7 @@ MonoBehaviour:
   animator: {fileID: 7931132785207403670}
   quizCanvas: {fileID: 0}
   secondQuiz: {fileID: 0}
+  startuptext: {fileID: 0}
   movementSound: {fileID: 3070550819662854981}
   sprintingSound: {fileID: 240245291709243671}
 --- !u!50 &7931132785207403672
@@ -319,7 +320,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e34c571b4751a3b47aca0400602e8146, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0

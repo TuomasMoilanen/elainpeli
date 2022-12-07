@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07a34a0d3b351a6418ebdec420a8144d, type: 3}
-  m_Name: Yes
+  m_Name: Hint 2
   m_EditorClassIdentifier: 
   dialogue:
-  - You Said Yes.
+  - 'Dingoes are some of the wallaby''s predators! Watch out for them!
+
+'
   responses: []
