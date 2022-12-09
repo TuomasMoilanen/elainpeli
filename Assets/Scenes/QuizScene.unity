@@ -453,48 +453,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QnA:
-  - Question: How Are you ?
+  - Question: What do wallabies eat?
     Answers:
-    - Good
-    - 'Very Good '
-    - Super Good
-    - Max Good
+    - Dingoes
+    - Smaller animals
+    - Insects
+    - Plants and grasses
     CorrectAnswer: 4
-  - Question: Quest ?
+  - Question: Which one of these are predators for the wallaby?
     Answers:
-    - Yes
-    - No
-    - yes
-    - not
+    - Kangaroos
+    - Crows
+    - Dingoes
+    - Other wallabies
     CorrectAnswer: 3
-  - Question: How much is ?
+  - Question: Which animals help ridding wallabies of ticks?
     Answers:
-    - Yes
-    - 3
-    - 2
-    - Ofcourse
-    CorrectAnswer: 3
-  - Question: Where in the is ?
+    - Fishes
+    - Kangaroos
+    - Monkeys
+    - Crows
+    CorrectAnswer: 4
+  - Question: What are wallabies?
     Answers:
-    - Yes
-    - Very
-    - Australia
-    - Ofcourse
-    CorrectAnswer: 3
-  - Question: What are ?
-    Answers:
-    - Yes
-    - Very
-    - Wallaby
-    - Ofcourse
-    CorrectAnswer: 3
-  - Question: Is this ?
-    Answers:
-    - Yes
-    - Very
-    - No
-    - Ofcourse
+    - Felines
+    - Marsupials
+    - Apes
+    - Canines
     CorrectAnswer: 2
+  - Question: Which country Australia used to be part of?
+    Answers:
+    - The Netherlands
+    - Japan
+    - Great Britain
+    - France
+    CorrectAnswer: 3
   options:
   - {fileID: 1097854837}
   - {fileID: 1189964272}
